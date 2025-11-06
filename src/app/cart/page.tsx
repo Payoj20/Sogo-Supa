@@ -60,8 +60,8 @@ const CartPage = () => {
     );
 
   return (
-    <div className="p-6 max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Cart ({cartCount})</h1>
+    <div className="px-6 py-10 pt-18 md:px-16 lg:px-32 max-w-4xl mx-auto mb-20">
+      <h1 className="text-3xl font-bold mb-8 text-center text-purple-700">Cart ({cartCount})</h1>
 
       <div className="space-y-4">
         {cartItems.map((item) => (

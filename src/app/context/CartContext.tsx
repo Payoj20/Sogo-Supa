@@ -14,7 +14,6 @@ import { useAuth } from "./AuthContext";
 import { getUserDocRef } from "../firebase/config";
 import { getDoc, updateDoc } from "firebase/firestore";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 
 type CartContextType = {
   cartItems: CartItem[];

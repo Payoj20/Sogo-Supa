@@ -129,8 +129,9 @@ export default function SignupPage() {
                     onClick={onGoogle}
                     disabled={loading}
                   >
-                    <img
+                    <Image
                       style={{ height: "1.2rem" }}
+                      alt="google"
                       src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg"
                     />
                     Continue with Google
