@@ -5,8 +5,6 @@ import "./globals.css";
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import TopbarWrapper from "./components/TopbarWrapper";
-import Hero from "./components/Hero";
-import Products from "./components/Products";
 import { Toaster } from "sonner";
 import Footer from "./components/footer";
 

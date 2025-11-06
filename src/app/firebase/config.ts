@@ -51,7 +51,7 @@ export const signOutUser = async () => signOut(auth);
 
 export const getUserDocRef = (uid: string) => doc(firestore, "users", uid);
 
-export const createOrUpdateUserDocument = async (user: User, extra: Record<string, any> = {}) => {
+export const createOrUpdateUserDocument = async (user: User, extra: Record<string, unknown> = {}) => {
   if (!user) return;
   const userRef = getUserDocRef(user.uid);
   const snap = await getDoc(userRef);
@@ -74,9 +74,11 @@ export const createOrUpdateUserDocument = async (user: User, extra: Record<strin
   return userRef;
 };
 
+export type OrderData = Record<string, unknown>;
+
 
 // Save an order for a specific user
-export const createUserOrder = async (uid: string, orderData: any) => {
+export const createUserOrder = async (uid: string, orderData: OrderData) => {
   const ordersRef = collection(firestore, "users", uid, "orders");
   const docRef = await addDoc(ordersRef, {
     ...orderData,

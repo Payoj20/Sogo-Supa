@@ -17,21 +17,39 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner"
+import { toast } from "sonner";
 import { Loader } from "lucide-react";
+import Image from "next/image";
+
+type CheckoutItem = {
+  id?: number;
+  productId?: number;
+  title: string;
+  price: number;
+  image: string;
+  qty?: number;
+};
+
+type CheckoutForm = {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  notes?: string;
+};
 
 const CheckoutPage = () => {
-   const searchParams = useSearchParams();
+  const searchParams = useSearchParams();
   const productId = searchParams.get("productId");
   const fromCart = searchParams.get("fromCart");
   const router = useRouter();
   const { user, loading } = useAuth();
   const { clearCart } = useCart();
 
-  const [product, setProduct] = useState<any>(null);
-  const [cartItems, setCartItems] = useState<any[]>([]);
+  const [product, setProduct] = useState<CheckoutItem | null>(null);
+  const [cartItems, setCartItems] = useState<CheckoutItem[]>([]);
   const [pageLoading, setPageLoading] = useState(true);
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<CheckoutForm>({
     name: "",
     email: "",
     phone: "",
@@ -57,7 +75,9 @@ const CheckoutPage = () => {
           const storedCart = localStorage.getItem("checkoutCart");
           if (storedCart) setCartItems(JSON.parse(storedCart));
         } else if (productId) {
-          const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
+          const res = await fetch(
+            `https://fakestoreapi.com/products/${productId}`
+          );
           const data = await res.json();
           setProduct(data);
         }
@@ -84,13 +104,17 @@ const CheckoutPage = () => {
     }
 
     try {
-      const userOrdersRef = collection(doc(firestore, "users", user.uid), "orders");
+      const userOrdersRef = collection(
+        doc(firestore, "users", user.uid),
+        "orders"
+      );
       const deliveryDate = new Date();
       deliveryDate.setDate(deliveryDate.getDate() + 5);
 
-      const items = fromCart
+      const items: CheckoutItem[] = fromCart
         ? cartItems
-        : [
+        : product
+        ? [
             {
               productId: product.id,
               title: product.title,
@@ -98,7 +122,8 @@ const CheckoutPage = () => {
               image: product.image,
               qty: 1,
             },
-          ];
+          ]
+        : [];
 
       await addDoc(userOrdersRef, {
         items,
@@ -121,7 +146,7 @@ const CheckoutPage = () => {
     }
   };
 
-  if (loading)
+  if (pageLoading || loading)
     return (
       <div className="flex flex-col justify-center items-center h-screen text-gray-500">
         <Loader className="animate-spin w-8 h-8 text-purple-600 mb-3" />
@@ -148,7 +173,7 @@ const CheckoutPage = () => {
                   key={item.productId || item.id}
                   className="flex items-center gap-4 p-3 border rounded-lg bg-white dark:bg-gray-900"
                 >
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.title}
                     className="w-20 h-20 object-contain"

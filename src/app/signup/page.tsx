@@ -39,8 +39,9 @@ export default function SignupPage() {
       await signUpWithEmailFn(email, password, { createdVia: "signup-page" });
       toast.success("Account created successfully!");
       router.push("/");
-    } catch (error: any) {
-      const message = error?.message ?? "Failed to sign up.";
+    } catch (error: unknown) {
+      const message =
+        error instanceof Error ? error.message : "Failed to sign up.";
       setErr(message);
       toast.error(message);
     } finally {
@@ -55,8 +56,9 @@ export default function SignupPage() {
       await signInWithGoogleFn();
       toast.success("Signed in successfully!");
       router.push("/");
-    } catch (e: any) {
-      const message = e?.message ?? "Google sign-in failed.";
+    } catch (error: unknown) {
+      const message =
+        error instanceof Error ? error.message : "Google sign-in failed.";
       setErr(message);
       toast.error(message);
     } finally {

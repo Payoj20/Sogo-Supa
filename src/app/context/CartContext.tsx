@@ -37,8 +37,7 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const { firebaseUser, addToCart: authAddToCartFromAuthCtx } = useAuth();
-  const router = useRouter();
+  const { firebaseUser } = useAuth();
   const [guestCart, setGuestCart] = useState<CartItem[]>([]);
   const [firebaseCart, setFirebaseCart] = useState<CartItem[]>([]);
 

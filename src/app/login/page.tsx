@@ -39,8 +39,9 @@ const Login = () => {
       await signInWithEmailFn(email, password);
       toast.success("Logged in successfully!");
       router.push("/");
-    } catch (error: any) {
-      const message = error?.message ?? "Login failed.";
+    } catch (error: unknown) {
+       const message =
+        error instanceof Error ? error.message : "Login failed.";
       setErr(message);
       toast.error(message);
     } finally {
@@ -55,8 +56,9 @@ const Login = () => {
       await signInWithGoogleFn();
       toast.success("Signed in successfully!");
       router.push("/");
-    } catch (e: any) {
-      const message = e?.message ?? "Google sign-in failed.";
+    } catch (error: unknown) {
+      const message =
+        error instanceof Error ? error.message : "Google sign-in failed.";
       setErr(message);
       toast.error(message);
     } finally {
@@ -133,7 +135,7 @@ const Login = () => {
                     Continue with Google
                   </Button>
                   <FieldDescription className="text-center">
-                    Don't have an account? <Link href="signup">Sign Up</Link>
+                    Don&apos;t have an account? <Link href="signup">Sign Up</Link>
                   </FieldDescription>
                 </Field>
               </FieldGroup>

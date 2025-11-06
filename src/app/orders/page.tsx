@@ -71,8 +71,8 @@ const OrdersPage = () => {
   if (!user)
     return (
       <div className="flex flex-col justify-center items-center h-screen text-center text-gray-600">
-        <h2 className="text-2xl font-semibold mb-3">You're not logged in</h2>
-        <img
+        <h2 className="text-2xl font-semibold mb-3">You&apos;re not logged in</h2>
+        <Image
           src="/notloggedin.png"
           alt="Not Logged In"
           className="w-150 h-100"
@@ -111,7 +111,7 @@ const OrdersPage = () => {
           className="mx-auto my-4"
         />
         <p className="mb-6 text-gray-500">
-          You haven’t placed any orders yet. Start shopping your favorites!
+          You haven&apos;t placed any orders yet. Start shopping your favorites!
         </p>
         <Link href="/products">
           <Button className="bg-purple-600 hover:bg-purple-700 text-white px-6">

@@ -1,10 +1,12 @@
+import { Timestamp } from "firebase/firestore";
+
 export type UserDoc = { 
     uid:string;
     email: string | null;
     name?: string | null;
     photoURL?: string | null;
     cart?: CartItem[];
-    createdAt?: any;
+    createdAt?: Timestamp | Date | null;
     orders?: Order[];
 };
 
@@ -21,5 +23,5 @@ export type CartItem = {
     title: string;
     price: number;
     qty: number;
-    image?: string;
+    image: string;
 }

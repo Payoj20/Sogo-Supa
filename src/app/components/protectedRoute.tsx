@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/navigation';
 import { Loader } from 'lucide-react';
 
-const protectedRoute = ({children} : {children: ReactNode}) => {
+const ProtectedRoute = ({children} : {children: ReactNode}) => {
 
     const {firebaseUser, loading} = useAuth();
     const router = useRouter();
@@ -24,4 +24,4 @@ const protectedRoute = ({children} : {children: ReactNode}) => {
   )
 }
 
-export default protectedRoute
+export default ProtectedRoute

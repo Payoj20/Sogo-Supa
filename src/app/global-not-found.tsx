@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import Image from 'next/image'
  
 const inter = Inter({ subsets: ['latin'] })
  
@@ -19,7 +20,7 @@ export default function GlobalNotFound() {
         
         <h1 className="text-4xl mt-30 font-semibold "><span className='text-red-500'>404</span> Page not found.</h1>
         <p className="text-gray-500">Browser our collections to find something you love!</p>
-        <img
+        <Image
           src="/404notfound.png"
           alt="Empty Cart"
           className="w-100 h-100"

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Loader } from "lucide-react";
+import Image from "next/image";
 
 const CartPage = () => {
   const {
@@ -51,7 +52,7 @@ const CartPage = () => {
         <p className="text-gray-500">
           Browse our collections to find something you love!
         </p>
-        <img src="/empty-cart.png" alt="Empty Cart" className="w-150 h-90" />
+        <Image src="/empty-cart.png" alt="Empty Cart" width={600} height={800} />
         <Link href="/products">
           <Button className="mt-3">Shop Now</Button>
         </Link>
@@ -68,10 +69,12 @@ const CartPage = () => {
             key={item.productId}
             className="flex items-center gap-4 border rounded-lg p-3 shadow-sm"
           >
-            <img
+            <Image
               src={item.image}
               alt={item.title}
-              className="w-20 h-20 object-contain"
+              width={80}
+              height={80}
+              className="object-contain w-25 h-25"
             />
 
             <div className="flex-1">
