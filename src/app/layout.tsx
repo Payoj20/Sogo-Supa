@@ -7,6 +7,7 @@ import { CartProvider } from "./context/CartContext";
 import TopbarWrapper from "./components/TopbarWrapper";
 import { Toaster } from "sonner";
 import Footer from "./components/footer";
+import FooterWrapper from "./components/FooterWrapper";
 
 
 const montserrat = Montserrat({
@@ -40,8 +41,10 @@ export default function RootLayout({
         
         <AuthProvider>
           <CartProvider>
-            <TopbarWrapper><main>{children}</main>
-            <Footer/>
+            <TopbarWrapper>
+              <FooterWrapper>
+                {children}
+              </FooterWrapper>
             </TopbarWrapper>
           </CartProvider>
         </AuthProvider>

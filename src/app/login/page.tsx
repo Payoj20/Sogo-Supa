@@ -67,7 +67,7 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-muted flex min-h-svh flex-col items-center justify-center gap-6 p-4 sm:p-6">
+    <div className="bg-muted flex min-h-screen flex-col items-center justify-center gap-6 p-4 sm:p-6">
       <div className="flex w-full max-w-sm sm:max-w-md flex-col gap-6 px-3 sm:px-0">
         <Link
           href="/"
@@ -129,7 +129,9 @@ const Login = () => {
                     disabled={loading}
                   >
                     <Image
-                      style={{ height: "1.2rem" }}
+                      style={{ height: "1.2rem"}}
+                      width={20}
+                      height={20}
                       alt="google"
                       src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg"
                     />

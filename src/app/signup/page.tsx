@@ -131,6 +131,8 @@ export default function SignupPage() {
                   >
                     <Image
                       style={{ height: "1.2rem" }}
+                      width={20}
+                      height={20}
                       alt="google"
                       src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg"
                     />
