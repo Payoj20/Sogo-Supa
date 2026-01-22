@@ -36,7 +36,7 @@ export default function SignupPage() {
     setLoading(true);
 
     try {
-      await signUpWithEmailFn(email, password, { createdVia: "signup-page" });
+      await signUpWithEmailFn(email, password,);
       toast.success("Account created successfully!");
       router.push("/");
     } catch (error: unknown) {
